@@ -28,6 +28,18 @@ object Main {
     val purchasesAttributionDfWithAggregator = withAggregator.join(userPurchasesDf, "purchaseId")
     purchasesAttributionDfWithAggregator.printSchema()
     purchasesAttributionDfWithAggregator.explain()
+
+    val task2 = new Task2
+
+    val topCampaigns = task2.getTopCampaigns(purchasesAttributionDf)
+    topCampaigns.explain()
+    topCampaigns.printSchema()
+
+    val popularChannels = task2.getMostPopularChannels(purchasesAttributionDf)
+    popularChannels.explain()
+    popularChannels.printSchema()
+
+    session.close()
   }
 
 }
