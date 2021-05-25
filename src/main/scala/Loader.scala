@@ -10,4 +10,11 @@ object Loader {
       .load(path + "/*.csv.gz")
   }
 
+  def readParquet(path: String)(implicit session: SparkSession): DataFrame = {
+    session
+      .read
+      .option("inferSchema", "true")
+      .parquet(path)
+  }
+
 }
