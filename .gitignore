@@ -1,3 +1,5 @@
 .idea/
 capstone-dataset/
 venv/
+parquet-dataset/
+target/
