@@ -49,11 +49,14 @@ class Task2(implicit sparkSession: SparkSession) {
   def getTopCampaignsTyped(df: DataFrame): Dataset[CampaignBillingCost] =
     purchasesDataframeToDataset(df)
       .groupByKey(_.campaignId)
-      .agg(sum($"billingCost").as[Double].name("totalCost"))
-      .withColumnRenamed("key", "campaignId")
+      .mapGroups { case (campaignId, purchases) =>
+        CampaignBillingCost(
+          campaignId,
+          purchases.map(_.billingCost.getOrElse(0.0)).sum
+        )
+      }
       .orderBy($"totalCost".desc)
       .limit(10)
-      .as[CampaignBillingCost]
 
   /**
    * Task 2.2
@@ -62,10 +65,8 @@ class Task2(implicit sparkSession: SparkSession) {
   def getMostPopularChannelsTyped(df: DataFrame): Dataset[ChannelCount] =
     purchasesDataframeToDataset(df)
       .groupByKey(_.channelId)
-      .agg(count($"channelId").as[Long].name("sessionCount"))
-      .withColumnRenamed("key", "channelId")
+      .mapGroups { case (channelId, purchases) => ChannelCount(channelId, purchases.size) }
       .orderBy($"sessionCount".desc)
-      .as[ChannelCount]
 
   private def purchasesDataframeToDataset(df: DataFrame) =
     df
