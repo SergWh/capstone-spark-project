@@ -1,5 +1,5 @@
-import org.apache.spark.sql.{DataFrame, Dataset, Row, SaveMode, SparkSession}
-import org.apache.spark.sql.functions.{col, lit, month, quarter, to_date, weekofyear, year}
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.{DataFrame, SaveMode}
 import utils.DatasetExtension.datasetToExtension
 
 import java.sql.Timestamp
