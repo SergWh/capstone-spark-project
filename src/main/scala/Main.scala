@@ -1,14 +1,12 @@
 import org.apache.spark.sql._
 import utils.BuilderExtension.builderToExtension
+import utils.Loader
 import utils.Utils.{loadMainConfigs, loadSparkConfigs, savePlan}
 
 import java.sql.Timestamp
 
 
 object Main extends App {
-
-  private val september2020 = Timestamp.valueOf("2020-09-01 10:10:10.0")
-  private val november11 = Timestamp.valueOf("2020-11-11 10:10:10.0")
 
   val mainConfigs = loadMainConfigs("src/main/resources/main.conf")
 
@@ -45,17 +43,10 @@ object Main extends App {
   val purchasesAttributionDfParquet = task1.aggregatePurchasesDf(clickStreamDfParquet)
     .join(userPurchasesDfParquet, "purchaseId")
 
-  savePlanTask3_1(purchasesAttributionDfCsv, csvName)
-  savePlanTask3_1(purchasesAttributionDfParquet, parquetName)
+  saveTask3_1Plans(csvDf = purchasesAttributionDfCsv, parquetDf = purchasesAttributionDfParquet)
 
   //Task3.2
-  type SavePlansFun = (DataFrame, Timestamp, String) => Unit
-  val savePlansFilteredByDate: SavePlansFun = savePlansTask3_2(Task3.filterByDate, "by_date")
-  val savePlansFilteredByYearMonth: SavePlansFun = savePlansTask3_2(Task3.filterByYearAndMonth, "by_year_month")
-  savePlansFilteredByDate(purchasesAttributionDfCsv, november11, csvName)
-  savePlansFilteredByDate(purchasesAttributionDfParquet, november11, parquetName)
-  savePlansFilteredByYearMonth(purchasesAttributionDfCsv, september2020, csvName)
-  savePlansFilteredByYearMonth(purchasesAttributionDfParquet, september2020, parquetName)
+  saveTask3_2Plans(csvDf = purchasesAttributionDfCsv, parquetDf = purchasesAttributionDfParquet)
 
   //Task3 final
   Task3.writeByWeek(purchasesAttributionDfCsv, quarterNum = 4, mainConfigs.weeklyPurchasesAttributionParquet)
@@ -64,26 +55,34 @@ object Main extends App {
   session.close()
 
 
-  private def savePlanTask3_1(purchasesAttributionDf: DataFrame, filename: String): Unit = {
+  private def saveTask3_1Plans(csvDf: DataFrame, parquetDf: DataFrame): Unit = {
     val path = mainConfigs.plansFolder + "/task3_1/"
-    savePlan(purchasesAttributionDf, path = path, filename = filename)
+    savePlan(csvDf, path = path, filename = csvName)
+    savePlan(parquetDf, path = path, filename = parquetName)
   }
 
-  private def savePlansTask3_2(filterByTimestamp: (DataFrame, Timestamp) => DataFrame, subFolder: String)
-                              (purchasesAttributionDf: DataFrame, timestamp: Timestamp, filename: String): Unit = {
-    val path = mainConfigs.plansFolder + "/task3_2/" + subFolder
-    val filteredDf = filterByTimestamp(purchasesAttributionDf, timestamp)
+  private def saveTask3_2Plans(csvDf: DataFrame, parquetDf: DataFrame): Unit = {
+    val september2020 = Timestamp.valueOf("2020-09-01 10:10:10.0")
+    val november11 = Timestamp.valueOf("2020-11-11 10:10:10.0")
+
+    val csvNovember11 = Task3.filterByDate(csvDf, november11)
+    val parquetNovember11 = Task3.filterByDate(csvDf, november11)
+    val datePath = mainConfigs.plansFolder + "/task3_2/by_date/"
+
+    val csvSeptember2020 = Task3.filterByYearAndMonth(csvDf, september2020)
+    val parquetSeptember2020 = Task3.filterByYearAndMonth(csvDf, september2020)
+    val yearMonthPath = mainConfigs.plansFolder + "/task3_2/by_year_month/"
+
     new Task2 {
-      savePlan(
-        getTopCampaigns(filteredDf),
-        path = path,
-        filename = "/campaigns_" + filename
-      )
-      savePlan(
-        getMostPopularChannels(filteredDf),
-        path = path,
-        filename = "/channels_" + filename
-      )
+      savePlan(getTopCampaigns(csvNovember11), datePath, "campaigns_" + csvName)
+      savePlan(getTopCampaigns(parquetNovember11), datePath, "campaigns_" + parquetName)
+      savePlan(getMostPopularChannels(csvNovember11), datePath, "channels_" + csvName)
+      savePlan(getMostPopularChannels(parquetNovember11), datePath, "channels_" + parquetName)
+
+      savePlan(getTopCampaigns(csvSeptember2020), yearMonthPath, "campaigns_" + csvName)
+      savePlan(getTopCampaigns(parquetSeptember2020), yearMonthPath, "campaigns_" + parquetName)
+      savePlan(getMostPopularChannels(csvSeptember2020), yearMonthPath, "channels_" + csvName)
+      savePlan(getMostPopularChannels(parquetSeptember2020), yearMonthPath, "channels_" + parquetName)
     }
   }
 
