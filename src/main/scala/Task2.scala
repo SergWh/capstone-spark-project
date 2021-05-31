@@ -34,10 +34,10 @@ class Task2(implicit sparkSession: SparkSession) {
     val viewName = s"channels"
     df.createOrReplaceTempView(viewName)
 
-    val query = "SELECT channelId, count(channelId) as sessionsCount " +
+    val query = "SELECT channelId, count(channelId) as sessionCount " +
       s"FROM $viewName " +
       "GROUP BY channelId " +
-      "ORDER BY sessionsCount DESC "
+      "ORDER BY sessionCount DESC "
     sparkSession.sql(query)
   }
 
@@ -52,7 +52,7 @@ class Task2(implicit sparkSession: SparkSession) {
       .mapGroups { case (campaignId, purchases) =>
         CampaignBillingCost(
           campaignId,
-          purchases.map(_.billingCost.getOrElse(0.0)).sum
+          purchases.filter(_.isConfirmed).map(_.billingCost.getOrElse(0.0)).sum
         )
       }
       .orderBy($"totalCost".desc)
