@@ -35,4 +35,10 @@ object Utils {
       .load[MainConfigs]
       .getOrElse(throw new IllegalArgumentException("can't load main configs"))
 
+  def loadTestConfigs(filename: String): TestConfigs =
+    ConfigSource
+      .file(filename)
+      .load[TestConfigs]
+      .getOrElse(throw new IllegalArgumentException("can't load configs"))
+
 }

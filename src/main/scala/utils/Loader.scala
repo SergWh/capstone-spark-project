@@ -12,6 +12,14 @@ object Loader {
       .load(path + "/*.csv.gz")
   }
 
+  def readSingleCsv(path: String)(implicit session: SparkSession): DataFrame = {
+    session.read
+      .format("csv")
+      .option("header", "true")
+      .option("inferSchema", "true")
+      .load(path)
+  }
+
   def readParquet(path: String)(implicit session: SparkSession): DataFrame = {
     session
       .read

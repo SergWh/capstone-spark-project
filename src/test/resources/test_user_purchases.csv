@@ -1,0 +1,11 @@
+purchaseId,purchaseTime,billingCost,isConfirmed
+purchase1,2020-12-13 16:00:20,10.0,False
+purchase2,2020-09-26 08:35:13,10.0,False
+purchase3,2020-11-20 21:32:23,10.0,True
+purchase4,2020-10-04 10:01:00,10.0,False
+purchase5,2020-10-04 10:01:00,10.0,False
+purchase6,2020-11-04 10:01:00,10.0,True
+purchase7,2020-09-04 10:01:00,10.0,False
+purchase8,2020-10-04 10:01:00,10.0,True
+purchase9,2020-12-04 10:01:00,10.0,False
+purchase10,2020-12-04 10:01:00,10.0,True
