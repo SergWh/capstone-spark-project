@@ -1,0 +1,11 @@
+purchaseId,channelId,campaignId,sessionId,purchaseTime,billingCost,isConfirmed
+purchase1,VK Ads,624,session1_start:session1_end,2020-12-13 16:00:20,10.0,false
+purchase8,Facebook Ads,528,session8_start:session8_end,2020-10-04 10:01:00,10.0,true
+purchase5,Google Ads,624,session5_start:session5_end,2020-10-04 10:01:00,10.0,false
+purchase3,Facebook Ads,372,session3_start:session3_end,2020-11-20 21:32:23,10.0,true
+purchase2,Facebook Ads,372,session2_start:session2_end,2020-09-26 08:35:13,10.0,false
+purchase4,Facebook Ads,372,session4_start:session4_end,2020-10-04 10:01:00,10.0,false
+purchase6,Google Ads,624,session6_start:session6_end,2020-11-04 10:01:00,10.0,true
+purchase10,VK Ads,464,session10_start:session10_end,2020-12-04 10:01:00,10.0,true
+purchase9,VK Ads,528,session9_start:session9_end,2020-12-04 10:01:00,10.0,false
+purchase7,Google Ads,624,session7_start:session7_end,2020-09-04 10:01:00,10.0,false

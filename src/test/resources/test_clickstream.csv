@@ -1,0 +1,51 @@
+userId,eventId,eventType,eventTime,attributes
+user1,session1_start,app_open,2020-11-08 02:01:13,"{'campaign_id': 624, 'channel_id': 'VK Ads'}"
+user1,bc366b3c-17c7-4e54-923c-4f2206f134d7,search_product,2020-11-08 02:09:22,
+user1,c696c180-f7fc-40ab-9c9a-c6915705ee9e,view_product_details,2020-11-08 02:10:41,
+user1,bdf268e1-2bff-4c10-96d2-96c264c8c92b,purchase,2020-11-08 02:16:17,{'purchase_id': 'purchase1'}
+user1,session1_end,app_close,2020-11-08 02:19:17,
+user2,session2_start,app_open,2020-12-01 12:15:08,"{'campaign_id': 372, 'channel_id': 'Facebook Ads'}"
+user2,3786c1c2-2400-43fa-8dc2-75162a8dacca,search_product,2020-12-01 12:23:34,
+user2,3ac8de32-af17-48d7-a004-176f6c2f2d46,view_product_details,2020-12-01 12:26:13,
+user2,ca3c08d3-1466-4f9d-8826-38beb5a438d9,purchase,2020-12-01 12:28:58,{'purchase_id': 'purchase2'}
+user2,session2_end,app_close,2020-12-01 12:31:58
+user3,session3_start,app_open,2020-12-01 12:15:08,"{'campaign_id': 372, 'channel_id': 'Facebook Ads'}"
+user3,3786c1c2-2400-43fa-8dc2-75162a8dacca,search_product,2020-12-01 12:23:34,
+user3,3ac8de32-af17-48d7-a004-176f6c2f2d46,view_product_details,2020-12-01 12:26:13,
+user3,ca3c08d3-1466-4f9d-8826-38beb5a438d9,purchase,2020-12-01 12:28:58,{'purchase_id': 'purchase3'}
+user3,session3_end,app_close,2020-12-01 12:31:58
+user4,session4_start,app_open,2020-12-01 12:15:08,"{'campaign_id': 372, 'channel_id': 'Facebook Ads'}"
+user4,3786c1c2-2400-43fa-8dc2-75162a8dacca,search_product,2020-12-01 12:23:34,
+user4,3ac8de32-af17-48d7-a004-176f6c2f2d46,view_product_details,2020-12-01 12:26:13,
+user4,ca3c08d3-1466-4f9d-8826-38beb5a438d9,purchase,2020-12-01 12:28:58,{'purchase_id': 'purchase4'}
+user4,session4_end,app_close,2020-12-01 12:31:58
+user5,session5_start,app_open,2020-12-24 01:35:15,"{'campaign_id': 624, 'channel_id': 'Google Ads'}"
+user5,9fcd8d61-5817-49cf-8857-e001ea8df824,search_product,2020-12-24 01:43:47,
+user5,ce2f26d9-ebe3-4bb1-9544-594ad388cb53,view_product_details,2020-12-24 01:47:28,
+user5,956b9b57-94f9-49f7-87cd-f3048dc8f432,purchase,2020-12-24 01:46:37,{'purchase_id': 'purchase5'}
+user5,session5_end,app_close,2020-12-24 01:47:37
+user6,session6_start,app_open,2020-12-24 01:35:15,"{'campaign_id': 624, 'channel_id': 'Google Ads'}"
+user6,9fcd8d61-5817-49cf-8857-e001ea8df824,search_product,2020-12-24 01:43:47,
+user6,ce2f26d9-ebe3-4bb1-9544-594ad388cb53,view_product_details,2020-12-24 01:47:28,
+user6,956b9b57-94f9-49f7-87cd-f3048dc8f432,purchase,2020-12-24 01:46:37,{'purchase_id': 'purchase6'}
+user6,session6_end,app_close,2020-12-24 01:47:37,
+user7,session7_start,app_open,2020-10-24 17:56:17,"{'campaign_id': 624, 'channel_id': 'Google Ads'}"
+user7,05ec33bf-5e20-47a8-a77a-9961b6b5a7df,search_product,2020-10-24 18:04:19,
+user7,aaa4034a-e6ad-4f72-807c-5a055c9398cf,view_product_details,2020-10-24 18:06:55,
+user7,7f679eac-0869-4db1-8693-9224e91d9006,purchase,2020-10-24 18:08:42,{'purchase_id': 'purchase7'}
+user7,session7_end,app_close,2020-10-24 18:10:42,
+user8,session8_start,app_open,2020-09-28 02:02:33,"{'campaign_id': 528, 'channel_id': 'Facebook Ads'}"
+user8,53875291-650d-4cd7-8696-be31ade9220b,search_product,2020-09-28 02:09:52,
+user8,278d239e-6c40-4431-9108-01754cb0be2d,view_product_details,2020-09-28 02:12:32,
+user8,efaea77f-2313-4e8c-98c5-efb423a43fc1,purchase,2020-09-28 02:26:19,{'purchase_id': 'purchase8'}
+user8,session8_end,app_close,2020-09-28 02:31:19,
+user9,session9_start,app_open,2020-11-03 22:22:45,"{'campaign_id': 528, 'channel_id': 'VK Ads'}"
+user9,81f60281-548e-4534-b912-78586c74f643,search_product,2020-11-03 22:29:54,
+user9,8ba0543e-d0b5-4ec9-be9b-6a61c4c73177,view_product_details,2020-11-03 22:32:28,
+user9,da452dc6-c4cc-416a-906d-6376bded64e6,purchase,2020-11-03 22:48:04,{'purchase_id': 'purchase9'}
+user9,session9_end,app_close,2020-11-03 22:50:04,
+user10,session10_start,app_open,2020-10-12 08:00:27,"{'campaign_id': 464, 'channel_id': 'VK Ads'}"
+user10,4e357441-bc2b-443e-93a2-73eb4f925742,search_product,2020-10-12 08:06:06,
+user10,e3061f76-8d4c-4e86-919b-b0527ec16b7b,view_product_details,2020-10-12 08:08:07,
+user10,5c3f4c9e-b62f-4210-aa0b-cf041621a044,purchase,2020-10-12 08:14:44,{'purchase_id': 'purchase10'}
+user10,session10_end,app_close,2020-10-12 08:18:44,
